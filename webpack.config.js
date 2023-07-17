@@ -7,7 +7,7 @@ module.exports = {
     entry: ["@babel/polyfill", "./src/index.jsx"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].[hash].js" //to exclude hashing problems in filenames, webpack creates bundles with unique names.
+        filename: "[name].[hash].js", //to exclude hashing problems in filenames, webpack creates bundles with unique names.
     },
     devServer: {
         port: 3000
