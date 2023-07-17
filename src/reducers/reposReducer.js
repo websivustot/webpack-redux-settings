@@ -2,7 +2,8 @@ const SET_COUNT = "SET_COUNT"
 
 const defaultState = {
     items: [],
-    isFetching: true
+    isFetching: true,
+    count: 0
 }
 
 export default function reposReducer(state = defaultState, action) {
