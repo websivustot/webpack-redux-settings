@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './main.less';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRepos } from '../actions/repos';
@@ -6,16 +6,32 @@ import Repo from './repo/Repo';
 
 const Main = () => {
     const dispatch = useDispatch()
-    const repos = useSelector(state => state.repos.items)
+    const repos = useSelector(state => state.repos.items);
+    const isFetching = useSelector(state => state.repos.isFetching)
+    const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
         dispatch(getRepos())
     }, [])
+
+    const searchHandler = () => {
+        dispatch(getRepos(searchValue))
+    }
     return ( 
         <div>
-            {repos.map(repo => 
-                <Repo repo={repo}/>
-            )}
+            <div className='search'>
+                <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder='input repo name' className="search-input" />
+                <button className="search-btn" onClick={() => searchHandler()}>Search</button>
+            </div>
+            {isFetching === false
+            ?
+            repos.map(repo => 
+                <Repo repo={repo} key={repo.id}/>
+            )
+            : 
+            <div className='fetching'>
+
+            </div>}
         </div>
      );
 }
