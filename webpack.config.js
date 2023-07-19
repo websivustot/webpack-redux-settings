@@ -10,7 +10,8 @@ module.exports = {
         filename: "[name].[hash].js", //to exclude hashing problems in filenames, webpack creates bundles with unique names.
     },
     devServer: {
-        port: 3000
+        port: 3000,
+        historyApiFallback: true
     },
     resolve: {
         extensions: ['.js', '.jsx'],
