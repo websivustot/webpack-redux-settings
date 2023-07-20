@@ -8,6 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].[hash].js", //to exclude hashing problems in filenames, webpack creates bundles with unique names.
+        publicPath: "/"
     },
     devServer: {
         port: 3000,
