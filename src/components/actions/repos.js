@@ -8,7 +8,7 @@ export const getRepos = (searchQuery = "stars:%3E1", currentPage, perPage) => {
     return async (dispatch) => {
         try {
             dispatch(setIsFetching(true))
-            const response = await axios.get(`https://api.github.com/search/repositoriesq?q=${searchQuery}&sort=stars&per_page=${perPage}&current_page=${currentPage}`)
+            const response = await axios.get(`https://api.github.com/search/repositories?q=${searchQuery}&sort=stars&per_page=${perPage}&current_page=${currentPage}`)
             dispatch(setRepos(response.data))
         } catch (error) {
             dispatch(setFetchError(true))
@@ -18,7 +18,6 @@ export const getRepos = (searchQuery = "stars:%3E1", currentPage, perPage) => {
             }, 2000)
         }
     }
-
 }
 
 export const getCurrentRepos = (username, repoName, setRepo) => {
